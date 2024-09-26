@@ -10,7 +10,9 @@ import {
 
 export const Register = (body, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post("https://deploy2-production-4d5c.up.railway.app/api/user/register", body);
+    const res = await axios.post("https://backendd-production.up.railway.app/api/user/register", body, {
+      withCredentials: true
+    });
 
     dispatch({
       type: REGISTER,
@@ -30,7 +32,7 @@ export const Register = (body, navigate) => async (dispatch) => {
 
 export const Login = (body, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post("https://deploy2-production-4d5c.up.railway.app/api/user/login", body,{ 
+    const res = await axios.post("https://backendd-production.up.railway.app/api/user/login", body,{ 
       withCredentials: true 
    });
 
@@ -55,8 +57,10 @@ export const GetCurrentUser = () => async (dispatch) => {
    const token=document.cookie.split('=')[1]
   
   try {
-    const res = await axios.get("https://deploy2-production-4d5c.up.railway.app/api/user/", {
-      headers: { Authorization: `Bearer ${token}` },
+    const res = await axios.get("https://backendd-production.up.railway.app/api/user/", {
+      headers: { Authorization: `Bearer ${token},` }, 
+    }, {
+      withCredentials: true
     });
 
     dispatch({

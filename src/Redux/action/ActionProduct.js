@@ -9,7 +9,9 @@ import {
 
 export const GetProduct = () => async (dispatch) => {
   try {
-    const res = await axios.get("https://deploy2-production-4d5c.up.railway.app/api/product/get");
+    const res = await axios.get("https://backendd-production.up.railway.app/api/product/get", {
+      withCredentials: true
+    });
 
     console.log(res.data)
     dispatch({
@@ -23,7 +25,9 @@ export const GetProduct = () => async (dispatch) => {
 
 export const addProduct = (body, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post("https://deploy2-production-4d5c.up.railway.app/api/product/post", body);
+    const res = await axios.post("https://backendd-production.up.railway.app/api/product/post", body, {
+      withCredentials: true
+    });
 
     dispatch({
       type: ADDPRODUCT,
@@ -38,7 +42,9 @@ export const addProduct = (body, navigate) => async (dispatch) => {
 
 export const editProduct = (id,data, navigate) => async (dispatch) => {
   try {
-    const res = await axios.patch(`https://deploy2-production-4d5c.up.railway.app/api/product/edit/${id}`,data)
+    const res = await axios.patch(`https://backendd-production.up.railway.app/api/product/edit/${id}`,data, {
+      withCredentials: true
+    })
 
     dispatch({
       type: EDITPRODUCT,
@@ -53,7 +59,9 @@ export const editProduct = (id,data, navigate) => async (dispatch) => {
 
 export const deleteProduct = (id, navigate) => async (dispatch) => {
   try {
-    const res = await axios.delete(`https://deploy2-production-4d5c.up.railway.app/api/product/${id}`);
+    const res = await axios.delete(`https://backendd-production.up.railway.app/api/product/${id}`, {
+      withCredentials: true
+    });
 
     dispatch({
       type: DELETEPRODUCT,
